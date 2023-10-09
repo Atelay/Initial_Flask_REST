@@ -29,7 +29,7 @@ def create_app(testing=False):
     configure_apispec(app)
     register_blueprints(app)
     init_celery(app)
-    # app.after_request(sql_debug)
+    app.after_request(sql_debug)
 
     with app.app_context():
         apispec.spec.components.schema("UserSchema", schema=UserSchema)

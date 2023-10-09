@@ -5,6 +5,7 @@ from calendarapi.api.schemas import UserSchema
 from calendarapi.models import User
 from calendarapi.extensions import db
 from calendarapi.commons.pagination import paginate
+from calendarapi.models import TokenBlocklist
 
 
 class UserResource(Resource):
@@ -107,6 +108,13 @@ class UserResource(Resource):
         user = db.session.get(User, user_id)
         if user is None:
             abort(404)
+
+        token_blocklist_entries = (
+            db.session.query(TokenBlocklist).filter_by(user_id=user.id).all()
+        )
+        for entry in token_blocklist_entries:
+            db.session.delete(entry)
+
         db.session.delete(user)
         db.session.commit()
 
