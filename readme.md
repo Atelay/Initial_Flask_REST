@@ -58,6 +58,12 @@ After successfully executing this command, you should have `7 Docker containers`
 - `celery` - The Celery task worker container.
 - `flower` - The Flower Celery task monitoring tool container.
 
+## Run locally
+If you need to run the application locally, stop the `web` container, change the database address in the `.flaskenv` file. 
+```
+DATABASE_URI=postgresql://admin:admin@localhost:5432/calendarapi
+```
+And then start the application with the `flask run --debug` command.
 
 ## Monitoring
 - The application with the Swagger documentation will be available at:
