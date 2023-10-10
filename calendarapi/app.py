@@ -7,6 +7,11 @@ from calendarapi import manage
 from calendarapi.api.resources import UserList, UserResource
 from calendarapi.api.schemas import (
     UserSchema,
+    VisitorSchema,
+    CitySchema,
+    LawyerSchema,
+    SpecializationSchema,
+    AppointmentSchema,
 )
 from calendarapi.auth.views import (
     login,
@@ -33,6 +38,13 @@ def create_app(testing=False):
 
     with app.app_context():
         apispec.spec.components.schema("UserSchema", schema=UserSchema)
+        apispec.spec.components.schema("VisitorSchema", schema=VisitorSchema)
+        apispec.spec.components.schema("CitySchema", schema=CitySchema)
+        apispec.spec.components.schema("LawyerSchema", schema=LawyerSchema)
+        apispec.spec.components.schema(
+            "SpecializationSchema", schema=SpecializationSchema
+        )
+        apispec.spec.components.schema("AppointmentSchema", schema=AppointmentSchema)
 
         apispec.spec.path(view=UserResource, app=app)
         apispec.spec.path(view=UserList, app=app)

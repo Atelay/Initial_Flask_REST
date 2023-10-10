@@ -85,6 +85,9 @@ http://localhost:5555
 - `init`: Project initialization, building, creating the admin user and container startup.
 - `build:` Builds Docker images.
 - `run`: Starts Docker containers.
+- `dev`: Reload container with applied changes.
+- `db-migrate`: Create migration file inside the container.
+- `db-upgrade`: Apply migrations inside the container.
 - `test`: Run project tests.
 - `lint`: Run the linter to check the code.
 - `tox`: Code linting with subsequent testing.

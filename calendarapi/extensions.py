@@ -9,12 +9,14 @@ from flask_jwt_extended import JWTManager
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from celery import Celery
+import sqlalchemy
+
 # from flask_caching import Cache
 
 from calendarapi.commons.apispec import APISpecExt
 
 
-db = SQLAlchemy()
+db: sqlalchemy = SQLAlchemy()
 jwt = JWTManager()
 ma = Marshmallow()
 migrate = Migrate()
